@@ -74,7 +74,6 @@ def discover_targets(high_client, label_prefix: str, default_interval: int) -> l
         except Exception as exc:
             log.bind(service="janus", component="discovery").warning(
                 "container_discovery_error",
-                event="container_discovery_error",
                 container_id=getattr(c, "id", "unknown"),
                 container_name=getattr(c, "name", "unknown"),
                 error=str(exc),

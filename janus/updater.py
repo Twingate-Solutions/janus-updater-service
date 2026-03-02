@@ -53,7 +53,6 @@ def check_and_update(
 
     log.bind(service="janus", component="updater").info(
         "check_start",
-        event="check_start",
         container_id=container_id,
         container_name=container_name,
         image_ref=image_ref,
@@ -66,7 +65,6 @@ def check_and_update(
     if not changed:
         log.bind(service="janus", component="updater").info(
             "no_update",
-            event="no_update",
             container_id=container_id,
             container_name=container_name,
             image_ref=image_ref,
@@ -78,7 +76,6 @@ def check_and_update(
 
     log.bind(service="janus", component="updater").info(
         "update_available",
-        event="update_available",
         container_id=container_id,
         container_name=container_name,
         image_ref=image_ref,
@@ -100,7 +97,6 @@ def check_and_update(
         )
         log.bind(service="janus", component="updater").info(
             "update_success",
-            event="update_success",
             container_id=container_id,
             container_name=container_name,
             image_ref=image_ref,
@@ -115,7 +111,6 @@ def check_and_update(
             if reclaimed:
                 log.bind(service="janus", component="updater").info(
                     "image_prune",
-                    event="image_prune",
                     space_reclaimed_bytes=reclaimed,
                 )
         except Exception:
@@ -123,7 +118,6 @@ def check_and_update(
     except Exception as e:
         log.bind(service="janus", component="updater").error(
             "update_failure",
-            event="update_failure",
             container_id=container_id,
             container_name=container_name,
             image_ref=image_ref,

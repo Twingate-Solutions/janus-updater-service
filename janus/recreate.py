@@ -99,7 +99,6 @@ def recreate_container_identical(*, high_client, low_client, container_id: str, 
 
     log.bind(service="janus", component="recreate").info(
         "recreate_start",
-        event="recreate_start",
         container_id=container_id,
         container_name=old_name,
         image_ref=image_ref,
@@ -293,7 +292,6 @@ def recreate_container_identical(*, high_client, low_client, container_id: str, 
 
         log.bind(service="janus", component="recreate").info(
             "recreate_success",
-            event="recreate_success",
             old_container_id=container_id,
             old_container_name=backup_name,
             new_container_id=new_container_id,
@@ -305,7 +303,6 @@ def recreate_container_identical(*, high_client, low_client, container_id: str, 
     except Exception as e:
         log.bind(service="janus", component="recreate").error(
             "recreate_failed",
-            event="recreate_failed",
             container_id=container_id,
             container_name=old_name,
             new_container_id=new_container_id,
@@ -331,14 +328,12 @@ def recreate_container_identical(*, high_client, low_client, container_id: str, 
 
             log.bind(service="janus", component="recreate").info(
                 "rollback_attempted",
-                event="rollback_attempted",
                 old_container_id=container_id,
                 restored_name=old_name,
             )
         except Exception as rb_e:
             log.bind(service="janus", component="recreate").error(
                 "rollback_failed",
-                event="rollback_failed",
                 container_id=container_id,
                 error=str(rb_e),
             )

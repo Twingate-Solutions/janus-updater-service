@@ -77,7 +77,6 @@ class Scheduler:
                     self._targets[cid] = t
                     log.bind(service="janus", component="scheduler").info(
                         "target_updated",
-                        event="target_updated",
                         container_id=cid,
                         container_name=t.name,
                     )
@@ -87,7 +86,6 @@ class Scheduler:
 
         log.bind(service="janus", component="scheduler").info(
             "reconcile",
-            event="reconcile",
             targets=len(want),
             active_tasks=len(self._tasks),
             duration_ms=int((time.time() - t0) * 1000),
@@ -101,7 +99,6 @@ class Scheduler:
             except Exception as e:
                 log.bind(service="janus", component="scheduler").error(
                     "reconcile_failed",
-                    event="reconcile_failed",
                     error=str(e),
                 )
             await asyncio.sleep(30)
