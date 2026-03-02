@@ -219,7 +219,6 @@ def recreate_container_identical(*, high_client, low_client, container_id: str, 
     for cfg_key, create_key in (
         ("Tty", "tty"),
         ("OpenStdin", "stdin_open"),
-        ("StdinOnce", "stdin_once"),
     ):
         val = cfg.get(cfg_key)
         if val is not None:
