@@ -11,5 +11,5 @@ def get_clients() -> tuple[DockerClient, APIClient]:
     Both created via from_env() to avoid internal transport URL format issues.
     """
     high = docker.from_env()
-    low = docker.APIClient.from_env()
+    low = high.api
     return high, low
