@@ -18,7 +18,7 @@ async def _run(sched: Scheduler) -> None:
 
     def _on_signal() -> None:
         log.bind(service="janus", component="main").info(
-            "shutdown_requested", event="shutdown_requested"
+            "shutdown_requested"
         )
         stop.set()
 
@@ -38,7 +38,7 @@ async def _run(sched: Scheduler) -> None:
     sched.cancel_all_tasks()
 
     log.bind(service="janus", component="main").info(
-        "shutdown_complete", event="shutdown_complete"
+        "shutdown_complete"
     )
 
 
@@ -50,7 +50,6 @@ def main() -> None:
 
     log.bind(service="janus", component="main").info(
         "startup",
-        event="startup",
         default_interval=settings.default_interval,
         stop_timeout=settings.stop_timeout,
         max_concurrent_updates=settings.max_concurrent_updates,
