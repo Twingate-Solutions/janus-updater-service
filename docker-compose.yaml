@@ -1,0 +1,15 @@
+services:
+  janus:
+    image: ghcr.io/twingate-solutions/janus-updater-service:latest
+    container_name: janus
+    restart: unless-stopped
+    environment:
+      - JANUS_DEFAULT_INTERVAL=300
+      - JANUS_LOG_LEVEL=INFO
+      - JANUS_MAX_CONCURRENT_UPDATES=1
+      - JANUS_STOP_TIMEOUT=10
+      - JANUS_LABEL_PREFIX=janus.autoupdate
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Optional: for private registries
+      - ${HOME}/.docker/config.json:/root/.docker/config.json:ro

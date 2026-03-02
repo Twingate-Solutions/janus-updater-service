@@ -1,0 +1,30 @@
+[project]
+name = "janus"
+version = "0.1.0"
+description = "Janus: label-driven Docker container image updater with safe recreation"
+requires-python = ">=3.11"
+dependencies = [
+  "docker>=7.0.0",
+  "pydantic>=2.7.0",
+  "structlog>=24.1.0",
+]
+
+[project.scripts]
+janus = "janus.main:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["janus*"]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.23",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
